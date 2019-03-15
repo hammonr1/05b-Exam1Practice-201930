@@ -609,8 +609,8 @@ class _ShapeWithThickness(object):
     Public methods:  _initialize_options.
     """
     defaults = {'color': 'black',
-                'thickness': 1,
-                'arrow': None}
+                'thickness': 5,
+                'arrow': 'None'}
 
     def _initialize_options(self):
         self.color = _ShapeWithThickness.defaults['color']
