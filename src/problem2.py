@@ -31,7 +31,7 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_problem2a()
+#    run_test_problem2a()
     run_test_problem2b()
 
 
@@ -82,10 +82,11 @@ def problem2a(circle, rectangle, window):
     end = rectangle.get_lower_left_corner()
     line = rg.Line(start,end)
     line.arrow = 'last'
-    window.get_next_mouse_click()
     line.attach_to(window)
+    window.continue_on_mouse_click()
+    window.render()
 
-    window.get_next_mouse_click()
+    window.continue_on_mouse_click()
     circle.fill_color = rectangle.outline_color
     window.render()
 
@@ -119,7 +120,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -161,6 +162,17 @@ def run_test_problem2b():
 
 
 def problem2b(rect, n, delta, win):
+    rect.attach_to(win)
+    win.render()
+    for i in range(n):
+        c1 = rect.get_upper_left_corner()
+        c2 = rect.get_lower_right_corner()
+        start = rg.Point(c1.x-(delta*i),c1.y-(delta*i))
+        end = rg.Point(c2.x +(delta*i),c2.y+(delta*i))
+        r = rg.Rectangle(start,end)
+        r.attach_to(win)
+    win.render()
+
     """
     See   problem2b_picture.pdf   in this project for pictures
     that may help you better understand the following specification:
@@ -190,7 +202,7 @@ def problem2b(rect, n, delta, win):
       :type win:    rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------

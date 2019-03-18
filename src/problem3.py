@@ -106,6 +106,17 @@ def run_test_problem3a():
 
 
 def problem3a(window, point, n):
+    for i in range(n+1):
+        start = rg.Point(point.x + 20*i,point.y+10*i)
+        end = rg.Point(start.x, start.y+50)
+        line = rg.Line(start,end)
+        line.attach_to(window)
+        window.render()
+
+
+
+
+
     """
     See   problem3a_picture.pdf   in this project for pictures
     that may help you better understand the following specification:
