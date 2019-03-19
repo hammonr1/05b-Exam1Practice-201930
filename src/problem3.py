@@ -3,8 +3,8 @@ PRACTICE Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Ruth Hammond.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -31,14 +31,15 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_problem3a()
+#    run_test_problem3a()
     run_test_problem3b()
+
 
 
 def run_test_problem3a():
     """ Tests the   problem3a   function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  problem1a  function defined below.
     #   Include at least **   5   ** tests (we wrote four for you).
     # -------------------------------------------------------------------------
@@ -58,7 +59,6 @@ def run_test_problem3a():
     print()
     print('Test 1 expected:', expected)
     print('       actual:  ', answer)
-
     window1.close_on_mouse_click()
 
     # Window 2:
@@ -81,7 +81,6 @@ def run_test_problem3a():
     print()
     print('Test 3 expected:', expected)
     print('       actual:  ', answer)
-
     window2.close_on_mouse_click()
 
     # Window 3:
@@ -95,7 +94,6 @@ def run_test_problem3a():
     print()
     print('Test 4 expected:', expected)
     print('       actual:  ', answer)
-
     window3.close_on_mouse_click()
 
     # -------------------------------------------------------------------------
@@ -106,14 +104,20 @@ def run_test_problem3a():
 
 
 def problem3a(window, point, n):
-    for i in range(n+1):
-        start = rg.Point(point.x + 20*i,point.y+10*i)
+#    p = rg.Point(point.x,point.y+65)
+#    ruth = rg.Line(point,p)
+#    ruth.attach_to(window)
+    for i in range(n):
+        start = rg.Point(point.x+20*i, point.y +10*i)
         end = rg.Point(start.x, start.y+50)
         line = rg.Line(start,end)
+        if i <= 13/2:
+            line.thickness = 2*i
+        else:
+            line.thickness = 13
+
         line.attach_to(window)
-        window.render()
-
-
+        window.render(0.5)
 
 
 
@@ -149,7 +153,7 @@ def problem3a(window, point, n):
         :type n:      int
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -177,6 +181,24 @@ def run_test_problem3b():
 
 
 def problem3b(m, point1):
+    window = rg.RoseWindow(400,650)
+    j=0
+    count = 0
+    for k in range(m):
+        point = rg.Point(point1.x, point1.y+60*k)
+        j = (2*k)+3
+        for i in range(j):
+            start = rg.Point(point.x+20*i, point.y +10*i)
+            end = rg.Point(start.x, start.y+50)
+            line = rg.Line(start,end)
+            if i <= 13/2:
+                line.thickness = 2*(i)+1
+            else:
+                line.thickness = 13
+            line.attach_to(window)
+            count = count + line.thickness
+        window.render(0.5)
+    return count
     """
     See   problem3b_picture.pdf   in this project for pictures
     that may help you better understand the following specification:
@@ -213,7 +235,7 @@ def problem3b(m, point1):
         :type point1: rg.Point
     """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
